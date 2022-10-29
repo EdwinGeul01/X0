@@ -196,12 +196,12 @@ class GameManager : Game
 
 /*
  * 
-Prefijos y miembros
-Asignaciones mentales
-Nombres de clases -> 
-Nombres de métodos -> 
-No exceder el atractivo
-Abreviaturas y simetrías
+Prefijos y miembros ✅
+Asignaciones mentales ✅
+Nombres de clases -> ✅
+Nombres de métodos -> ✅
+No exceder el atractivo ✅
+Abreviaturas y simetrías ✅
  
  */
 class C_Connect
@@ -212,7 +212,7 @@ class C_Connect
 
 
 
-    private void M_DrawBoard()
+    private void M_DrwTbl()
     {
 
         Console.WriteLine("------------");
@@ -228,7 +228,7 @@ class C_Connect
     }
 
 
-    private void M_SelectRegion()
+    private void M_SlctReg()
     {
         bool BusyRegion = false;
         int RegionSelected = -1;
@@ -278,8 +278,14 @@ class C_Connect
     }
 
 
-    private void M_ChangePlayer()
+
+
+
+    private void StartTurn_And_ChangePlayer()
     {
+
+        M_SlctReg();
+   
 
         if (p1T)
         {
@@ -293,21 +299,11 @@ class C_Connect
         }
 
 
-    }
-
-
-    private void M_StartTurn()
-    {
-
-        M_SelectRegion();
-        M_ChangePlayer();
-
-
 
     }
 
 
-    private bool M_CheckWinner()
+    private bool CheckQuienEsQueso()
     {
         String Character = "X";
         for (int i = 0; i < 2; i++)
@@ -330,7 +326,7 @@ class C_Connect
 
     }
 
-    private bool M_CheckTie()
+    private bool M_ChckTie()
     {
         foreach (string position in V_Pos)
         {
@@ -345,38 +341,43 @@ class C_Connect
     }
 
 
-    public void M_StartGame()
+    public void M_StartGm()
     {
         Console.WriteLine("Starting the game !! ");
-        bool HasFinished = false;
-        bool HasTie = false;
 
 
-        while (!HasFinished && !HasTie)
+        while (true)
         {
-            M_DrawBoard();
-            M_StartTurn();
-            HasFinished = M_CheckWinner();
-            HasTie = M_CheckTie();
+            M_DrwTbl();
+            StartTurn_And_ChangePlayer();
             Console.Clear();
 
+
+            if (M_ChckTie())
+            {
+                Console.WriteLine("Partido empatado");
+                break;
+            }
+            else if (CheckQuienEsQueso())
+            {
+                if (!p1T)
+                {
+                    Console.WriteLine("Jugador 1 Gano");
+                    break;
+
+                }
+                else
+                {
+                    Console.WriteLine("Jugador 2 Gano");
+                    break;
+
+                }
+            }
+
+
+
         }
 
-        if (HasTie)
-        {
-            Console.WriteLine("Partido empatado");
-        }
-        else if (HasFinished)
-        {
-            if (!p1T)
-            {
-                Console.WriteLine("Jugador 1 Gano");
-            }
-            else
-            {
-                Console.WriteLine("Jugador 2 Gano");
-            }
-        }
 
 
 
