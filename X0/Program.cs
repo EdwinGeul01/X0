@@ -113,18 +113,26 @@ class GameManager : Game
         String Character = "X";
         for (int i = 0; i < 2; i++)
         {
-            if (boardPositions[0] == Character && boardPositions[1] == Character && boardPositions[2] == Character)
+            if (boardPositions[0] == Character && boardPositions[1] == Character && boardPositions[2] == Character) // victoria horizontales
                 return true;
             else if (boardPositions[3] == Character && boardPositions[4] == Character && boardPositions[5] == Character)
                 return true;
             else if (boardPositions[6] == Character && boardPositions[7] == Character && boardPositions[8] == Character)
                 return true;
-            else if (boardPositions[0] == Character && boardPositions[4] == Character && boardPositions[8] == Character)
+            else if (boardPositions[0] == Character && boardPositions[4] == Character && boardPositions[8] == Character) // Victoria en cruz
                 return true;
             else if (boardPositions[2] == Character && boardPositions[4] == Character && boardPositions[6] == Character)
                 return true;
+            else if (boardPositions[0] == Character && boardPositions[3] == Character && boardPositions[6] == Character) 
+                return true;
+            else if (boardPositions[1] == Character && boardPositions[4] == Character && boardPositions[7] == Character)
+                return true;
+            else if (boardPositions[2] == Character && boardPositions[5] == Character && boardPositions[8] == Character)
+                return true;
 
-            Character = "0";
+
+
+                Character = "0";
         }
         return false;
 
@@ -207,8 +215,8 @@ Abreviaturas y simetrías ✅
 class C_Connect
 {
     string[] V_Pos = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }; // Positions on the board
-    bool p1T = true;
-    bool p2T = false;
+    bool p1 = true; 
+    bool p2 = false;
 
 
 
@@ -248,7 +256,7 @@ class C_Connect
                     }
                     else
                     {
-                        if (p1T)
+                        if (p1)
                             V_Pos[RegionSelected - 1] = "0";
                         else
                             V_Pos[RegionSelected - 1] = "X";
@@ -287,15 +295,15 @@ class C_Connect
         M_SlctReg();
    
 
-        if (p1T)
+        if (p1)
         {
-            p2T = true;
-            p1T = false;
+            p2 = true;
+            p1 = false;
         }
-        else if (p2T)
+        else if (p2)
         {
-            p2T = false;
-            p1T = true;
+            p2 = false;
+            p1 = true;
         }
 
 
@@ -341,7 +349,7 @@ class C_Connect
     }
 
 
-    public void M_StartGm()
+    public void S()
     {
         Console.WriteLine("Starting the game !! ");
 
@@ -360,7 +368,7 @@ class C_Connect
             }
             else if (CheckQuienEsQueso())
             {
-                if (!p1T)
+                if (!p1)
                 {
                     Console.WriteLine("Jugador 1 Gano");
                     break;
