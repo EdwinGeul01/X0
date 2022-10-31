@@ -1,11 +1,23 @@
 ﻿
 
+/*
+ * 
+Prefijos y miembros ✅
+Asignaciones mentales ✅
+Nombres de clases -> ✅
+Nombres de métodos -> ✅
+No exceder el atractivo ✅
+Abreviaturas y simetrías ✅
+ 
+ */
+
+
 interface Game
 {
     void StartGame();
 }
 
-class GameManager : Game
+class GameXO : Game
 {
     string[] boardPositions = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
     bool player1Turn = true;
@@ -202,17 +214,7 @@ class GameManager : Game
 
 
 
-/*
- * 
-Prefijos y miembros ✅
-Asignaciones mentales ✅
-Nombres de clases -> ✅
-Nombres de métodos -> ✅
-No exceder el atractivo ✅
-Abreviaturas y simetrías ✅
- 
- */
-class C_Connect
+class C_General
 {
     string[] V_Pos = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }; // Positions on the board
     bool p1 = true; 
@@ -351,7 +353,7 @@ class C_Connect
 
     public void S()
     {
-        Console.WriteLine("Starting the game !! ");
+        Console.WriteLine("Iniciando el Juego !! ");
 
 
         while (true)
@@ -391,14 +393,7 @@ class C_Connect
 
 
     }
-
-
-
-
-
-
-
-
+  
 
 
 }
@@ -411,9 +406,9 @@ class MainClass
     public static void Main(string[] args)
     {
 
-        GameManager GameManager = new GameManager();
+        GameXO GameXO = new GameXO();
 
-        GameManager.StartGame();
+        GameXO.StartGame();
 
 
 
